@@ -40,7 +40,7 @@ class ViewController: UIViewController {
               loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
               loginButton.widthAnchor.constraint(equalToConstant: 280).isActive = true
         
-        loginButton.addTarget(self, action:#selector (loggedin(sender:)), for: .touchUpInside)
+        loginButton.addTarget(self, action:#selector (didTapButton), for: .touchUpInside)
         
         
     
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         createButton.topAnchor.constraint(equalTo:view.topAnchor, constant: 570).isActive = true
               createButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
               createButton.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        createButton.addTarget(self, action: #selector(accountCreated(sender:)), for: .touchUpInside)
+        createButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         
     
@@ -83,16 +83,54 @@ class ViewController: UIViewController {
         button.layer.masksToBounds = true
     }
     
-    @IBAction func accountCreated (sender:UIButton){
+    @objc func didTapButton(){
+     //tab bar controller
+    
+       
+        let rootvc = secondViewController()
+        let navVC = UINavigationController(rootViewController: rootvc)
         
-        print("Account Created!")
+       
+        
+        navVC.modalPresentationStyle = .fullScreen
+        present (navVC, animated: false)
     }
     
-    @IBAction func loggedin (sender:UIButton){
-        
-        print("Account Logged in!")
-    }
-
+    
 
 }
+
+
+class secondViewController: UIViewController{
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemGray6
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissSelf))
+        
+       
+        
+        
+    }
+    
+        
+    
+    
+    @objc private func dismissSelf(){
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    private func Background(){
+        
+    
+        
+        
+           }
+        
+        
+    }
+    
 

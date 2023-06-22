@@ -20,11 +20,12 @@
                                 <rect key="frame" x="10" y="59" width="373" height="359"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owj-JP-as5">
-                                <rect key="frame" x="107.33333333333333" y="259.66666666666669" width="178.33333333333337" height="152.66666666666669"/>
+                                <rect key="frame" x="93.333333333333329" y="259.66666666666669" width="206.66666666666669" height="152.66666666666669"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="lpy.">
+                                    <fragment content="kart">
                                         <attributes>
                                             <font key="NSFont" size="109" name="BanglaSangamMN-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
