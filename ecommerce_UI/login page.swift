@@ -93,7 +93,7 @@ class ViewController: UIViewController {
        
         
         navVC.modalPresentationStyle = .fullScreen
-        present (navVC, animated: false)
+        present (navVC, animated: true)
     }
     
     
@@ -101,17 +101,83 @@ class ViewController: UIViewController {
 }
 
 
-class secondViewController: UIViewController{
+class secondViewController: UIViewController, UITableViewDataSource{
+    
+    
+    let fruits = [
+    
+        Fruit(name:"Apple", Image: "fruit_apple", Price: "5"),
+        Fruit(name:"Cherry", Image: "fruit_cherry", Price: "5"),
+        Fruit(name:"Grape", Image: "fruit_grapes", Price: "5"),
+        Fruit(name:"Melon", Image: "fruit_melon", Price: "5"),
+        Fruit(name:"Orange", Image: "fruit_orange", Price: "5"),
+        Fruit(name:"Pear", Image: "fruit_pear", Price: "5"),
+        Fruit(name:"Pomegranate", Image: "fruit_pomegranate", Price: "5"),
+        ]
+    
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(tableView)
+        tableView.frame = view.bounds
+        tableView.dataSource = self
+        tableView.register(CustomCell.self, forCellReuseIdentifier:"cell")
+        tableView.rowHeight = 130
+        
+        
         view.backgroundColor = .systemGray6
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissSelf))
+        }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fruits.count
+    }
+    
+   //for custom cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
         
-       
+        let fruit = fruits[indexPath.row]
+        cell.fruitImage.image = UIImage(named: fruit.Image)
+        cell.fruitName.text = fruit.name
+        cell.fruitPrice.text = "Rs \(fruit.Price)"
+    
+        return cell
+    }
+    
+    struct Fruit{
+        
+        var name:String
+        var Image:String
+        var Price:String
+    }
+    
+    class CustomCell: UITableViewCell {
+        
+        let fruitImage = UIImageView()
+        let fruitName = UILabel()
+        let fruitPrice = UILabel()
         
         
+        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+            
+            addSubview(fruitName)
+            addSubview(fruitImage)
+            addSubview(fruitPrice)
+            
+            fruitImage.frame = CGRect(x: 20, y: 20, width: 100, height: 100)
+            fruitName.frame = CGRect(x: 120, y: 20, width: 120, height: 30)
+            fruitPrice.frame = CGRect(x: 120, y: 60, width: 120, height: 30)
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     }
     
         
@@ -122,6 +188,8 @@ class secondViewController: UIViewController{
         dismiss(animated: true, completion: nil)
         
     }
+    
+    
         
         
     }
