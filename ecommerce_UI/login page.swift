@@ -122,13 +122,6 @@ class secondViewController: UIViewController{
         dismiss(animated: true, completion: nil)
         
     }
-    
-    private func Background(){
-        
-    
-        
-        
-           }
         
         
     }
